@@ -6,7 +6,6 @@ from src.putils import mkdir, delete_folder, random_string
 
 
 class B64Convert:
-
     @staticmethod
     def img_as_b64(img):
         temp_dir = './temp' + random_string(10) + '/'

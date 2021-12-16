@@ -25,5 +25,3 @@ class YouTubeStream:
                 break
             yield frame
         self.capture.release()
-
-
