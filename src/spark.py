@@ -3,6 +3,8 @@ import threading
 from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 
+from src.putils import pretty_print
+
 
 class Spark:
     def __init__(self):
@@ -31,7 +33,7 @@ class Spark:
 
             stream = stream.reduceByKeyAndWindow(avg, lambda x, y: x - y, 30,
                                                  3)
-            stream.pprint()
+            pretty_print(stream)
 
         stream.saveAsTextFiles(log)
         thread = threading.Thread(target=Spark.pending, args=(self, ))

@@ -44,3 +44,7 @@ def prepare_dir(project_name):
     mkdir(logs)
 
     return dataset_img, dataset_txt, output, logs
+
+
+def pretty_print(stream):
+    pass

@@ -2,6 +2,7 @@ from time import strftime, gmtime
 
 import cv2
 
+CRITERIA = 0.65
 
 class SIFTCalculator:
     def __init__(self, output):
@@ -22,7 +23,7 @@ class SIFTCalculator:
 
     def filter(self, img):
         img, kp = SIFTCalculator.get_features(img)
-        if len(kp) > 6050:
+        if len(kp) * 100 / (img.shape[1] * img.shape[0]) >= CRITERIA:
             self.save(img)
 
     def save(self, img):
@@ -32,4 +33,6 @@ class SIFTCalculator:
             '.jpg', img)
 
     def count(self, img):
-        return SIFTCalculator.count_features(img)
+        img, kp = SIFTCalculator.count_features(img)
+        print('Avg:', kp)
+        return kp, kp
